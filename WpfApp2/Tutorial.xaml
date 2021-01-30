@@ -1,0 +1,153 @@
+﻿<Window x:Class="WpfApp2.Tutorial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Tutorial" Height="1000" Width="1100" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="image/backgroud.jpg"/>
+    </Window.Background>
+
+    <Window.BorderBrush>
+        <ImageBrush ImageSource="/image/bambus.png"/>
+    </Window.BorderBrush>
+
+    <Grid x:Name="Grid"  Width="810" Height="810">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.8">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="9.462" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FFDBF1F0" Offset="0.263"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+       
+        
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+
+        <WrapPanel x:Name="wrapPanel" Panel.ZIndex="10" Grid.Row="2" Grid.Column="1">
+        </WrapPanel>
+
+
+        <!--<MediaElement x:Name="gif" Visibility="Visible" Source="giphy.gif" Panel.ZIndex="500">
+
+        </MediaElement>-->
+        <Image x:Name="gif" Source="image/giphy.gif" gif:ImageBehavior.RepeatBehavior="Forever" gif:ImageBehavior.AnimatedSource="image/giphy.gif" Opacity="0.7">
+        </Image>
+
+
+        <Image x:Name="img" Panel.ZIndex="1" Source="image/bambustut.png" RenderTransformOrigin="0.172,1.667" Margin="60,565,30,-636" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="image/bambus1.png"/>
+            </Image.OpacityMask>
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="8"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.054"/>
+                    <TranslateTransform X="10" Y="10"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img1" Panel.ZIndex="1" Source="image/bambustut.png" RenderTransformOrigin="0.172,1.667" Margin="-725,35,725,74" Grid.Row="2" Grid.RowSpan="3">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="8"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.271"/>
+                    <TranslateTransform X="10" Y="10"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img2" Panel.ZIndex="1" Source="image/bambustut.png" RenderTransformOrigin="0.172,1.667" Margin="-725,-55,725,74" Grid.RowSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="8"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.271"/>
+                    <TranslateTransform X="10" Y="10"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img3" Panel.ZIndex="1" Source="image/bambustut.png" RenderTransformOrigin="0.172,1.667" Margin="60,565,30,-636" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="8"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.109"/>
+                    <TranslateTransform X="10" Y="10"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+
+        <Button x:Name="fin" Foreground="Black" Grid.Column="7" Margin="0,90,0,-50" Grid.Row="8" Content="Finish" FontFamily="/WpfApp2;component/font/#Osake" FontSize="20" Grid.ColumnSpan="2" Click="finish">
+            <Button.Background>
+                <ImageBrush ImageSource="image/btntutshadow.png"/>
+            </Button.Background>
+
+        </Button>
+
+        <Button x:Name="endgame" Foreground="Black" Margin="0,90,0,-50" Grid.Row="8" Content="Exit" FontFamily="/WpfApp2;component/font/#Osake" FontSize="20" Grid.ColumnSpan="2" Click="exitgame">
+            <Button.Background>
+                <ImageBrush ImageSource="image/btntutshadow.png"/>
+            </Button.Background>
+
+        </Button>
+
+
+
+
+    </Grid>
+</Window>

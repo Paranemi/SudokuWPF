@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Media;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace WpfApp2
@@ -25,7 +13,7 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         private Generate gs;
         private Solver sv;
         private int[,] field;
@@ -34,11 +22,8 @@ namespace WpfApp2
         private int k;
         public MainWindow(int difficulty)
         {
-
-           
-                InitializeComponent();
-                create(difficulty);
-
+            InitializeComponent();
+            create(difficulty);
         }
         // Play a sound.
         public void Play(string filename)
@@ -68,7 +53,7 @@ namespace WpfApp2
         {
             wrapPanel.Visibility = Visibility.Hidden;
             var brush = new ImageBrush();
-            brush.ImageSource = new BitmapImage(new Uri("../../image/btnshadow.png", UriKind.Relative));          
+            brush.ImageSource = new BitmapImage(new Uri("../../image/btnshadow.png", UriKind.Relative));
             gs = new Generate();
             field = gs.sudoku(difficulty);
             SoundPlayer pl = new SoundPlayer("../../sound/startgame.wav");
@@ -87,12 +72,12 @@ namespace WpfApp2
                     bt.FontSize = 50;
                     bt.FontFamily = new FontFamily("Osake");
                     bt.Foreground = Brushes.White;
-                    bt.Content = field[i,j];
+                    bt.Content = field[i, j];
                     Grid.SetRow(bt, i);
                     Grid.SetColumn(bt, j);
                     Grid.Children.Add(bt);
                     bt.Background = brush;
-                    
+
                     //Generates 9 buttons and add them to the WprapPanel. They serve as the input device for the user.
                     for (int k = 1; k < 10; k++)
                     {
@@ -115,8 +100,8 @@ namespace WpfApp2
                             current.Content = "";
                             field[Grid.GetRow(wrapPanel), Grid.GetColumn(wrapPanel)] = 0;
                         };
-                       
-                        
+
+
                         wrapPanel.Children.Add(btwp);
                     }
 
@@ -130,15 +115,15 @@ namespace WpfApp2
                         bt.IsEnabled = true;
                         bt.MouseEnter += (o, f) =>
                         {
-                            current= bt;
+                            current = bt;
                             Grid.SetRow(wrapPanel, Grid.GetRow(bt));
                             Grid.SetColumn(wrapPanel, Grid.GetColumn(bt));
-                            wrapPanel.Visibility = Visibility.Visible;                          
+                            wrapPanel.Visibility = Visibility.Visible;
                         };
 
                     }
                     else
-                    {                
+                    {
                         bt.MouseEnter += (o, f) =>
                         {
                             wrapPanel.Visibility = Visibility.Hidden;
@@ -160,12 +145,18 @@ namespace WpfApp2
                     img3.MouseEnter += (o, f) =>
                     {
                         wrapPanel.Visibility = Visibility.Hidden;
-                    };                  
-               
-                }                
+                    };
+
+                }
             }
         }
- 
+
+        private void Media_Ended(object sender, EventArgs e)
+        {
+            m_mediaPlayer.Position = TimeSpan.Zero;
+            m_mediaPlayer.Play();
+        }
+
         //Button, when clicked using the solved method in the Solver class, to check if input war correct.
         private void finish(object sender, RoutedEventArgs e)
         {
